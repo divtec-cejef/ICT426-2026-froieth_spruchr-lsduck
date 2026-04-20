@@ -28,7 +28,7 @@
     },
     {
       "id": 2,
-      "nom": "Canard Garde Royal",
+      "nom": "Garde Royal",
       "image": "../img/Canard_Garde.jpg",
       "description": "Un canard élégant en uniforme et prêt à protéger le royaume.",
       "prix": 7.95,
@@ -44,7 +44,7 @@
     },
     {
       "id": 3,
-      "nom": "Canard Roi",
+      "nom": "Ducking",
       "image": "../img/Canard_Roi.png",
       "description": "Un canard majestueux coiffé d’une couronne, régnant fièrement sur le royaume des baignoires.",
       "prix": 9.95,
@@ -86,7 +86,7 @@
     },
     {
       "id": 5,
-      "nom": "Canard VentaBlack",
+      "nom": "VentaBlack",
       "image": "../img/Canard_VentaBlack.png",
       "description": "Un canard mystérieux, élégant et énigmatique comme une ombre glissant sur l’eau.",
       "prix": 5.95,
@@ -96,6 +96,22 @@
         "taille": "8.5 cm",
         "poids": "52 g",
         "theme": "Mystère"
+      },
+      "avis": [
+      ]
+    },
+    {
+      "id": 6,
+      "nom": "BatDuck",
+      "image": "../img/Canard_Batduck.png",
+      "description": "Un canard sombre et déterminé, prêt à défendre Gotham contre le crime.",
+      "prix": 11.95,
+      "details": {
+        "couleur": "Noir",
+        "matiere": "PVC",
+        "taille": "15 cm",
+        "poids": "52 g",
+        "theme": "Super-Héro"
       },
       "avis": [
       ]
