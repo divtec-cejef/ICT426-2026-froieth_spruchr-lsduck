@@ -15,7 +15,7 @@ function genererEtoiles(note) {
     return etoiles;
 }
 
-// --- Création de la carte produit ---
+// Création de la carte produit
 async function creerCarteProduit(produit) {
     const template = await fetch("components/product-card.html").then(res => res.text());
 
