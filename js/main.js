@@ -15,12 +15,7 @@ function genererEtoiles(note) {
     return etoiles;
 }
 
-// Ajout l'objet au panier
-function ajouterAuPanier(id) {
-    console.log("Produit ajouté au panier :", id);
-}
-
-// --- Création de la carte produit ---
+// Création de la carte produit
 async function creerCarteProduit(produit) {
     const template = await fetch("components/product-card.html").then(res => res.text());
 
