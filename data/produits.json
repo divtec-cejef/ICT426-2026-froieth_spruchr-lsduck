@@ -2,22 +2,22 @@
   "produits": [
     {
       "id": 1,
-      "nom": "Canard Classique Jaune",
-      "image": "https://example.com/images/canard-jaune.jpg",
+      "nom": "Canard Classique",
+      "image": "../img/Canard.png",
       "description": "Le célèbre canard jaune qui accompagne petits et grands à l'heure du bain.",
-      "prix": 4.99,
+      "prix": 4.95,
       "details": {
         "couleur": "Jaune",
         "matiere": "PVC",
         "taille": "8 cm",
         "poids": "50 g",
-        "age_recommande": "3+ ans"
+        "age_recommande": "3+ ans",
+        "theme": "Animal"
       },
       "avis": [
         {
           "utilisateur": "Sophie",
-          "note": 5,
-          "commentaire": "Parfait pour le bain de mon enfant !"
+          "note": 5
         },
         {
           "utilisateur": "Marc",
@@ -28,68 +28,48 @@
     },
     {
       "id": 2,
-      "nom": "Canard Pirate",
-      "image": "https://example.com/images/canard-pirate.jpg",
-      "description": "Un canard audacieux avec un bandeau et un sabre, prêt pour l'aventure.",
-      "prix": 7.49,
+      "nom": "Canard Garde Royal",
+      "image": "../img/Canard_Garde.jpg",
+      "description": "Un canard élégant en uniforme et prêt à protéger le royaume.",
+      "prix": 7.95,
       "details": {
         "couleur": "Jaune et noir",
         "matiere": "Plastique ABS",
         "taille": "9 cm",
         "poids": "60 g",
-        "theme": "Pirate"
+        "theme": "Royauté"
       },
       "avis": [
-        {
-          "utilisateur": "Lucas",
-          "note": 5,
-          "commentaire": "Trop stylé !"
-        },
-        {
-          "utilisateur": "Emma",
-          "note": 4,
-          "commentaire": "Mon fils l'adore."
-        }
       ]
     },
     {
       "id": 3,
-      "nom": "Canard Licorne",
-      "image": "https://example.com/images/canard-licorne.jpg",
-      "description": "Un canard magique avec une corne brillante et des couleurs arc-en-ciel.",
-      "prix": 8.99,
+      "nom": "Canard Roi",
+      "image": "../img/Canard_Roi.png",
+      "description": "Un canard majestueux coiffé d’une couronne, régnant fièrement sur le royaume des baignoires.",
+      "prix": 9.95,
       "details": {
         "couleur": "Multicolore",
         "matiere": "PVC",
         "taille": "10 cm",
         "poids": "55 g",
-        "theme": "Fantaisie"
+        "theme": "Royauté"
       },
       "avis": [
-        {
-          "utilisateur": "Chloé",
-          "note": 5,
-          "commentaire": "Magnifique !"
-        },
-        {
-          "utilisateur": "Nina",
-          "note": 5,
-          "commentaire": "Très bonne qualité."
-        }
       ]
     },
     {
       "id": 4,
-      "nom": "Canard Astronaute",
-      "image": "https://example.com/images/canard-astronaute.jpg",
-      "description": "Un canard prêt à explorer l'espace avec sa combinaison spatiale.",
-      "prix": 9.49,
+      "nom": "Canard Girafe",
+      "image": "../img/Canard_Girafe.jpg",
+      "description": "Un canard tacheté au long cou, fier comme une girafe miniature.",
+      "prix": 8.95,
       "details": {
-        "couleur": "Blanc",
+        "couleur": "Brun et Jaune",
         "matiere": "Plastique",
         "taille": "9.5 cm",
         "poids": "65 g",
-        "theme": "Espace"
+        "theme": "Animal"
       },
       "avis": [
         {
@@ -106,28 +86,18 @@
     },
     {
       "id": 5,
-      "nom": "Canard DJ",
-      "image": "https://example.com/images/canard-dj.jpg",
-      "description": "Un canard branché avec casque audio et lunettes de soleil.",
-      "prix": 6.99,
+      "nom": "Canard VentaBlack",
+      "image": "../img/Canard_VentaBlack.png",
+      "description": "Un canard mystérieux, élégant et énigmatique comme une ombre glissant sur l’eau.",
+      "prix": 5.95,
       "details": {
-        "couleur": "Jaune et noir",
+        "couleur": "Noir",
         "matiere": "PVC",
         "taille": "8.5 cm",
         "poids": "52 g",
-        "theme": "Musique"
+        "theme": "Mystère"
       },
       "avis": [
-        {
-          "utilisateur": "Alex",
-          "note": 5,
-          "commentaire": "Super fun !"
-        },
-        {
-          "utilisateur": "Léa",
-          "note": 4,
-          "commentaire": "Design cool."
-        }
       ]
     }
   ]
