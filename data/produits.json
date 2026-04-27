@@ -1,0 +1,120 @@
+{
+  "produits": [
+    {
+      "id": 1,
+      "nom": "Canard Classique",
+      "image": "../img/Canard.png",
+      "description": "Le célèbre canard jaune qui accompagne petits et grands à l'heure du bain.",
+      "prix": 4.95,
+      "details": {
+        "couleur": "Jaune",
+        "matiere": "PVC",
+        "taille": "8 cm",
+        "poids": "50 g",
+        "age_recommande": "3+ ans",
+        "theme": "Animal"
+      },
+      "avis": [
+        {
+          "utilisateur": "Sophie",
+          "note": 5
+        },
+        {
+          "utilisateur": "Marc",
+          "note": 4,
+          "commentaire": "Simple mais efficace."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "nom": "Garde Royal",
+      "image": "../img/Canard_Garde.jpg",
+      "description": "Un canard élégant en uniforme et prêt à protéger le royaume.",
+      "prix": 7.95,
+      "details": {
+        "couleur": "Jaune et noir",
+        "matiere": "Plastique ABS",
+        "taille": "9 cm",
+        "poids": "60 g",
+        "theme": "Royauté"
+      },
+      "avis": [
+      ]
+    },
+    {
+      "id": 3,
+      "nom": "Ducking",
+      "image": "../img/Canard_Roi.png",
+      "description": "Un canard majestueux coiffé d’une couronne, régnant fièrement sur le royaume des baignoires.",
+      "prix": 9.95,
+      "details": {
+        "couleur": "Multicolore",
+        "matiere": "PVC",
+        "taille": "10 cm",
+        "poids": "55 g",
+        "theme": "Royauté"
+      },
+      "avis": [
+      ]
+    },
+    {
+      "id": 4,
+      "nom": "Canard Girafe",
+      "image": "../img/Canard_Girafe.jpg",
+      "description": "Un canard tacheté au long cou, fier comme une girafe miniature.",
+      "prix": 8.95,
+      "details": {
+        "couleur": "Brun et Jaune",
+        "matiere": "Plastique",
+        "taille": "9.5 cm",
+        "poids": "65 g",
+        "theme": "Animal"
+      },
+      "avis": [
+        {
+          "utilisateur": "Thomas",
+          "note": 4,
+          "commentaire": "Très original."
+        },
+        {
+          "utilisateur": "Julie",
+          "note": 5,
+          "commentaire": "Idéal pour les fans d'espace."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "nom": "VentaBlack",
+      "image": "../img/Canard_VentaBlack.png",
+      "description": "Un canard mystérieux, élégant et énigmatique comme une ombre glissant sur l’eau.",
+      "prix": 5.95,
+      "details": {
+        "couleur": "Noir",
+        "matiere": "PVC",
+        "taille": "8.5 cm",
+        "poids": "52 g",
+        "theme": "Mystère"
+      },
+      "avis": [
+      ]
+    },
+    {
+      "id": 6,
+      "nom": "BatDuck",
+      "image": "../img/Canard_Batduck.png",
+      "description": "Un canard sombre et déterminé, prêt à défendre Gotham contre le crime.",
+      "prix": 11.95,
+      "details": {
+        "couleur": "Noir",
+        "matiere": "PVC",
+        "taille": "15 cm",
+        "poids": "52 g",
+        "theme": "Super-Héro"
+      },
+      "avis": [
+      ]
+    }
+  ]
+}
