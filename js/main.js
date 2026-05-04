@@ -31,6 +31,32 @@ async function creerCarteProduit(produit) {
     img.alt = produit.nom;
     img.onerror = () => img.parentElement.innerHTML = "🦆";
 
+    card.style.cursor = 'pointer';
+    card.addEventListener('click', (e) => {
+        if (!e.target.closest('.add-to-cart')) {
+            window.location.href = `produit.html?id=${produit.id}`;
+        }
+    });
+
+    card.querySelector(".add-to-cart").addEventListener('click', (e) => {
+        e.stopPropagation();
+        ajouterAuPanier(produit.id);
+    });
+
+    //objet va dans panier
+    function ajouterAuPanier(id) {
+        // Panier
+        card.querySelector(".add-to-cart").addEventListener('click', (e) => {
+            e.stopPropagation();
+            ajouterAuPanier(produit.id);
+        });
+
+        card.style.cursor = 'pointer';
+        card.addEventListener('click', () => {
+            window.location.href = ``;
+        });
+    }
+
     // Texte
     card.querySelector(".product-name").textContent = produit.nom;
     card.querySelector(".product-description").textContent = produit.description;
