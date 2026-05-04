@@ -17,7 +17,7 @@ function genererEtoiles(note) {
 
 // Création de la carte produit
 async function creerCarteProduit(produit) {
-    const template = await fetch("components/product-card.html").then(res => res.text());
+    const template = await fetch("./components/product-card.html").then(res => res.text());
 
     const wrapper = document.createElement("div");
     wrapper.innerHTML = template.trim();
@@ -87,7 +87,7 @@ async function creerCarteProduit(produit) {
 
 // --- Affichage des produits ---
 async function afficherProduits() {
-    const data = await fetch("data/produits.json").then(r => r.json());
+    const data = await fetch("../res/data/produits.json").then(r => r.json());
     const produits = data.produits;
 
     const zone = document.getElementById("produits");

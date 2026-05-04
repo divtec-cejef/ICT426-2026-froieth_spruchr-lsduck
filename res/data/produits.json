@@ -3,7 +3,7 @@
     {
       "id": 1,
       "nom": "Canard Classique",
-      "image": "../img/Canard.png",
+      "image": "../res/img/Canard.png",
       "description": "Le célèbre canard jaune qui accompagne petits et grands à l'heure du bain.",
       "prix": 4.95,
       "details": {
@@ -29,7 +29,7 @@
     {
       "id": 2,
       "nom": "Garde Royal",
-      "image": "../img/Canard_Garde.jpg",
+      "image": "../res/img/Canard_Garde.jpg",
       "description": "Un canard élégant en uniforme et prêt à protéger le royaume.",
       "prix": 7.95,
       "details": {
@@ -45,7 +45,7 @@
     {
       "id": 3,
       "nom": "Ducking",
-      "image": "../img/Canard_Roi.png",
+      "image": "../res/img/Canard_Roi.png",
       "description": "Un canard majestueux coiffé d’une couronne, régnant fièrement sur le royaume des baignoires.",
       "prix": 9.95,
       "details": {
@@ -61,7 +61,7 @@
     {
       "id": 4,
       "nom": "Canard Girafe",
-      "image": "../img/Canard_Girafe.jpg",
+      "image": "../res/img/Canard_Girafe.jpg",
       "description": "Un canard tacheté au long cou, fier comme une girafe miniature.",
       "prix": 8.95,
       "details": {
@@ -86,8 +86,8 @@
     },
     {
       "id": 5,
-      "nom": "VentaBlack",
-      "image": "../img/Canard_VentaBlack.png",
+      "nom": "VantaBlack",
+      "image": "../res/img/Canard_VentaBlack.png",
       "description": "Un canard mystérieux, élégant et énigmatique comme une ombre glissant sur l’eau.",
       "prix": 5.95,
       "details": {
@@ -103,7 +103,7 @@
     {
       "id": 6,
       "nom": "BatDuck",
-      "image": "../img/Canard_Batduck.png",
+      "image": "../res/img/Canard_Batduck.png",
       "description": "Un canard sombre et déterminé, prêt à défendre Gotham contre le crime.",
       "prix": 11.95,
       "details": {
