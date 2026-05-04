@@ -88,8 +88,8 @@ function renderProduit(produit) {
 }
 
 function ajouterPanier(id) {
-    alert(`Produit #${id} ajouté au panier ! 🛒`);
-    // → Remplace par ta vraie logique panier
+    localStorage.setItem("productId", id);
+    console.log(`le produit #${id} a été ajouté au panier`)
 }
 
 // ─── Chargement principal ──────────────────────────────────

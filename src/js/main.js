@@ -40,16 +40,13 @@ async function creerCarteProduit(produit) {
 
     card.querySelector(".add-to-cart").addEventListener('click', (e) => {
         e.stopPropagation();
-        ajouterAuPanier(produit.id);
     });
 
     //objet va dans panier
     function ajouterAuPanier(id) {
         // Panier
-        card.querySelector(".add-to-cart").addEventListener('click', (e) => {
-            e.stopPropagation();
-            ajouterAuPanier(produit.id);
-        });
+        console.log(`le produit #${id} a été ajouté au panier`)
+        localStorage.setItem("productId", id);
 
         card.style.cursor = 'pointer';
         card.addEventListener('click', () => {
