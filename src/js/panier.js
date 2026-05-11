@@ -1,0 +1,79 @@
+const PRODUITS_JSON = "../res/data/produits.json";
+
+let cart = [];
+let products = {};
+
+function getCartFromLS() {
+    try {
+        const raw = localStorage.getItem('productId');
+        if (raw) return JSON.parse(raw);
+    } catch(e){}
+    return null;
+}
+
+function saveCart() {
+    try { localStorage.setItem('productId', JSON.stringify(cart)); } catch(e){}
+}
+
+function fmt(v) { return v.toFixed(2) + ' CHF'; }
+
+function renderCart() {
+    const container = document.getElementById('cart-items');
+    const badge = document.getElementById('count-badge');
+    const total = cart.reduce((s,i)=>s+i.qty,0);
+    badge.textContent = total > 0 ? `(${total} article${total>1?'s':''})` : '';
+
+    if (cart.length === 0) {
+        container.innerHTML = `<div class="empty-state"><span class="duck">🦆</span><p>Votre panier est vide…</p><a class="empty-btn" href="index.html">Ajouter un canard</a></div>`;
+        document.getElementById('subtotal').textContent = '0.00 CHF';
+        document.getElementById('shipping').textContent = 'Gratuite';
+        document.getElementById('total').textContent = '0.00 CHF';
+        return;
+    }
+
+    container.innerHTML = cart.map((item, idx) => {
+        const p = products[item.id] || {};
+        const name = p.nom || `Produit #${item.id}`;
+        const desc = p.description || '';
+        const prix = (p.prix || 0) * item.qty;
+        const d = p.details || {};
+        const badges = [d.theme, d.taille, d.matiere].filter(Boolean);
+        const imgHTML = p.image
+            ? `<img src="${p.image}" alt="${name}" onerror="this.style.display='none';this.nextSibling.style.display='block'">`
+            : '';
+        return `
+    <div class="cart-item">
+        <div class="item-img">${imgHTML}<span class="placeholder" style="${p.image?'display:none':''}">🦆</span></div>
+        <div class="item-info">
+            <div class="item-name">${name}</div>
+            ${desc ? `<div class="item-desc">${desc}</div>` : ''}
+            ${badges.length ? `<div class="item-badges">${badges.map(b=>`<span class="badge">${b}</span>`).join('')}</div>` : ''}
+        </div>
+    </div>`;
+    }).join('');
+}
+
+async function loadProductData(ids) {
+    try {
+        const res = await fetch(PRODUITS_JSON);
+        if (!res.ok) throw new Error();
+        const data = await res.json();
+
+        // Gérer { "produits": [...] } ou directement un tableau
+        const arr = Array.isArray(data) ? data : (data.produits || Object.values(data).flat());
+
+        arr.forEach(p => { if (p.id !== undefined) products[p.id] = p; });
+    } catch(e) {
+        console.log(e)
+    }
+}
+
+async function init() {
+    const saved = getCartFromLS();
+    cart = (saved && saved.length > 0) ? saved : [];
+    const ids = [...new Set(cart.map(i => i.id))];
+    await loadProductData(ids);
+    renderCart();
+}
+
+init();
