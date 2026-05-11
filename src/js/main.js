@@ -42,23 +42,53 @@ async function creerCarteProduit(produit) {
         e.stopPropagation();
     });
 
-    //objet va dans panier
+
+    // Panier
     function ajouterAuPanier(id) {
-        // Panier
-        console.log(`le produit #${id} a été ajouté au panier`)
-        localStorage.setItem("productId", id);
+        // Lire le panier existant
+        let panier = [];
+        try {
+            const raw = localStorage.getItem('productId');
+            if (raw) panier = JSON.parse(raw);
+            if (!Array.isArray(panier)) panier = [];
+        } catch (e) {
+            panier = [];
+        }
+
+        // Chercher si le produit est déjà dans le panier
+        const existant = panier.find(item => item.id === id);
+        if (existant) {
+            existant.qty += 1;
+        } else {
+            panier.push({id: id, qty: 1});
+        }
+
+        // Sauvegarder
+        localStorage.setItem('productId', JSON.stringify(panier));
+        console.log(`Produit #${id} ajouté au panier`, panier);
+
 
         card.style.cursor = 'pointer';
         card.addEventListener('click', () => {
             window.location.href = ``;
         });
+
+        // Feedback visuel
+        const btn = card.querySelector(".add-to-cart");
+        const texteOriginal = btn.textContent;
+        btn.textContent = "✓ Ajouté !";
+        btn.disabled = true;
+        setTimeout(() => {
+            btn.textContent = texteOriginal;
+            btn.disabled = false;
+        }, 1500);
     }
 
-    // Texte
+// Texte
     card.querySelector(".product-name").textContent = produit.nom;
     card.querySelector(".product-description").textContent = produit.description;
 
-    // Détails
+// Détails
     const d = produit.details;
     card.querySelector(".product-details").innerHTML = `
         ${d.couleur ? `<span class="detail-badge">🎨 ${d.couleur}</span>` : ""}
@@ -69,14 +99,14 @@ async function creerCarteProduit(produit) {
         ${d.age_recommande ? `<span class="detail-badge">👶 ${d.age_recommande}</span>` : ""}
     `;
 
-    // Prix
+// Prix
     card.querySelector(".product-price").textContent = produit.prix.toFixed(2) + " CHF";
 
-    // Avis
+// Avis
     card.querySelector(".stars").innerHTML = genererEtoiles(moyenneNotes);
     card.querySelector(".rating-count").textContent = `(${produit.avis.length})`;
 
-    // Panier
+// Panier
     card.querySelector(".add-to-cart").onclick = () => ajouterAuPanier(produit.id);
 
     return card;
@@ -96,4 +126,12 @@ async function afficherProduits() {
 }
 
 // --- Lancement ---
-afficherProduits();
+if (typeof window !== 'undefined') {
+    // S'exécute seulement dans le navigateur, pas dans Jest
+    afficherProduits();
+}
+
+// À la fin de main.js
+if (typeof module !== 'undefined') {
+    module.exports = { afficherProduits };
+}

@@ -88,8 +88,22 @@ function renderProduit(produit) {
 }
 
 function ajouterPanier(id) {
-    localStorage.setItem("productId", id);
-    console.log(`le produit #${id} a été ajouté au panier`)
+    let panier = [];
+    try {
+        const raw = localStorage.getItem('productId');
+        if (raw) panier = JSON.parse(raw);
+        if (!Array.isArray(panier)) panier = [];
+    } catch(e) { panier = []; }
+
+    const existant = panier.find(item => item.id === id);
+    if (existant) {
+        existant.qty += 1;
+    } else {
+        panier.push({ id: id, qty: 1 });
+    }
+
+    localStorage.setItem('productId', JSON.stringify(panier));
+    console.log(`Produit #${id} ajouté au panier`, panier);
 }
 
 // ─── Chargement principal ──────────────────────────────────
