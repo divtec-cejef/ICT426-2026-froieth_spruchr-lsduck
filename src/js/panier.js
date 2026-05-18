@@ -49,8 +49,39 @@ function renderCart() {
             ${desc ? `<div class="item-desc">${desc}</div>` : ''}
             ${badges.length ? `<div class="item-badges">${badges.map(b=>`<span class="badge">${b}</span>`).join('')}</div>` : ''}
         </div>
+        <div class="item-controls">
+          <div class="item-price">${fmt(prix)}</div>
+          <div class="qty-row">
+            <button class="qty-btn" onclick="changeQty(${idx},-1)">−</button>
+            <span class="qty-val">${item.qty}</span>
+            <button class="qty-btn" onclick="changeQty(${idx},1)">+</button>
+          </div>
+          </div>
     </div>`;
     }).join('');
+
+    updateSummary();
+}
+
+function updateSummary() {
+    const sub = cart.reduce((s,i)=>{
+        const p = products[i.id];
+        return s + (p ? p.prix * i.qty : 0);
+    }, 0);
+
+    const shipping = sub >= 30 ? 0 : 5.90;
+    const tot = sub + shipping;
+
+    document.getElementById('subtotal').textContent = fmt(sub);
+    document.getElementById('shipping').textContent = shipping === 0 ? 'Gratuite 🎉' : fmt(shipping);
+    document.getElementById('total').textContent = fmt(tot);
+}
+
+
+function changeQty(idx, delta) {
+    cart[idx].qty = Math.max(1, cart[idx].qty + delta);
+    saveCart();
+    renderCart();
 }
 
 async function loadProductData(ids) {
