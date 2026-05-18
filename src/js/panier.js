@@ -91,6 +91,11 @@ function removeItem(idx) {
     renderCart();
 }
 
+function finaliserCommande() {
+    localStorage.removeItem("productId");
+    window.location.href = "Merci.html";
+}
+
 async function loadProductData(ids) {
     try {
         const res = await fetch(PRODUITS_JSON);
