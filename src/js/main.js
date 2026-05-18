@@ -126,4 +126,12 @@ async function afficherProduits() {
 }
 
 // --- Lancement ---
-afficherProduits();
+if (typeof window !== 'undefined') {
+    // S'exécute seulement dans le navigateur, pas dans Jest
+    afficherProduits();
+}
+
+// À la fin de main.js
+if (typeof module !== 'undefined') {
+    module.exports = { afficherProduits };
+}
