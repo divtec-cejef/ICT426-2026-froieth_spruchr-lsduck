@@ -24,7 +24,7 @@ function renderCart() {
     badge.textContent = total > 0 ? `(${total} article${total>1?'s':''})` : '';
 
     if (cart.length === 0) {
-        container.innerHTML = `<div class="empty-state"><span class="duck">🦆</span><p>Votre panier est vide…</p><a class="empty-btn" href="index.html">Ajouter un canard</a></div>`;
+        container.innerHTML = `<div class="empty-state"><span class="duck">🦆</span><p>Votre panier est vide…</p><a class="empty-btn" href="index.html">Chercher un canard</a></div>`;
         document.getElementById('subtotal').textContent = '0.00 CHF';
         document.getElementById('shipping').textContent = 'Gratuite';
         document.getElementById('total').textContent = '0.00 CHF';
@@ -56,6 +56,7 @@ function renderCart() {
             <span class="qty-val">${item.qty}</span>
             <button class="qty-btn" onclick="changeQty(${idx},1)">+</button>
           </div>
+          <button class="remove-btn" onclick="removeItem(${idx})">Retirer🗑️</button>
           </div>
     </div>`;
     }).join('');
@@ -80,6 +81,12 @@ function updateSummary() {
 
 function changeQty(idx, delta) {
     cart[idx].qty = Math.max(1, cart[idx].qty + delta);
+    saveCart();
+    renderCart();
+}
+
+function removeItem(idx) {
+    cart.splice(idx, 1);
     saveCart();
     renderCart();
 }
