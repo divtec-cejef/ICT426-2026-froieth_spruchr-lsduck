@@ -6,11 +6,24 @@
     <meta name="description" content="Boutique de canards en plastique - Découvrez notre collection unique de canards de bain">
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" type="image/x-icon" href="../res/icon.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css">
     <title>LSDuck</title>
 </head>
 <body>
 <div class="container">
-    <div class="products-grid" id="produits"></div>
+    <!-- Barre de recherche -->
+    <div class="BarreDeRecherche">
+        <input
+                type="text"
+                id="searchInput"
+                placeholder="🔎 Rechercher un canard..."
+                oninput="filterCanards()"
+        />
+        <button id="clearBtn" onclick="clearSearch()" style="display: none;">✕</button>
+    </div>
+
+    <!-- Produits -->
+    <div class="products-grid" id="results"></div>
 
     <script src="js/main.js"></script>
     <script src="js/header.js"></script>
