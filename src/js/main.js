@@ -143,8 +143,12 @@ async function renderResults(items) {
         container.appendChild(carte);
     }
 }
-
-// À la fin de main.js
-if (typeof module !== 'undefined') {
-    module.exports = { afficherProduits };
+// À ajouter à la fin de js/main.js pour l'environnement de test (Jest)
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = {
+        calculerMoyenneNotes,
+        genererEtoiles,
+        creerCarteProduit,
+        renderResults
+    };
 }
