@@ -42,10 +42,8 @@ async function creerCarteProduit(produit) {
         e.stopPropagation();
     });
 
-
     // Panier
     function ajouterAuPanier(id) {
-        // Lire le panier existant
         let panier = [];
         try {
             const raw = localStorage.getItem('productId');
@@ -55,7 +53,6 @@ async function creerCarteProduit(produit) {
             panier = [];
         }
 
-        // Chercher si le produit est déjà dans le panier
         const existant = panier.find(item => item.id === id);
         if (existant) {
             existant.qty += 1;
@@ -63,15 +60,8 @@ async function creerCarteProduit(produit) {
             panier.push({id: id, qty: 1});
         }
 
-        // Sauvegarder
         localStorage.setItem('productId', JSON.stringify(panier));
         console.log(`Produit #${id} ajouté au panier`, panier);
-
-
-        card.style.cursor = 'pointer';
-        card.addEventListener('click', () => {
-            window.location.href = ``;
-        });
 
         // Feedback visuel
         const btn = card.querySelector(".add-to-cart");
@@ -84,11 +74,11 @@ async function creerCarteProduit(produit) {
         }, 1500);
     }
 
-// Texte
+    // Texte
     card.querySelector(".product-name").textContent = produit.nom;
     card.querySelector(".product-description").textContent = produit.description;
 
-// Détails
+    // Détails
     const d = produit.details;
     card.querySelector(".product-details").innerHTML = `
         ${d.couleur ? `<span class="detail-badge">🎨 ${d.couleur}</span>` : ""}
@@ -99,36 +89,59 @@ async function creerCarteProduit(produit) {
         ${d.age_recommande ? `<span class="detail-badge">👶 ${d.age_recommande}</span>` : ""}
     `;
 
-// Prix
+    // Prix
     card.querySelector(".product-price").textContent = produit.prix.toFixed(2) + " CHF";
 
-// Avis
+    // Avis
     card.querySelector(".stars").innerHTML = genererEtoiles(moyenneNotes);
     card.querySelector(".rating-count").textContent = `(${produit.avis.length})`;
 
-// Panier
+    // Panier
     card.querySelector(".add-to-cart").onclick = () => ajouterAuPanier(produit.id);
 
     return card;
 }
 
-// --- Affichage des produits ---
-async function afficherProduits() {
-    const data = await fetch("../res/data/produits.json").then(r => r.json());
-    const produits = data.produits;
+// --- Recherche ---
+let searchData = [];
 
-    const zone = document.getElementById("produits");
+fetch("../res/data/produits.json")
+    .then(res => res.json())
+    .then(async json => {
+        searchData = Array.isArray(json) ? json : json.produits ?? [];
+        await renderResults(searchData);
+    });
 
-    for (const produit of produits) {
-        const carte = await creerCarteProduit(produit);
-        zone.appendChild(carte);
-    }
+async function filterCanards() {
+    const q = document.getElementById("searchInput").value.trim().toLowerCase();
+    const clearBtn = document.getElementById("clearBtn");
+    if (clearBtn) clearBtn.style.display = q ? "block" : "none";
+    const filtered = q
+        ? searchData.filter(item => item.nom.toLowerCase().includes(q))
+        : searchData;
+    await renderResults(filtered);
 }
 
-// --- Lancement ---
-if (typeof window !== 'undefined') {
-    // S'exécute seulement dans le navigateur, pas dans Jest
-    afficherProduits();
+function clearSearch() {
+    document.getElementById("searchInput").value = "";
+    const clearBtn = document.getElementById("clearBtn");
+    if (clearBtn) clearBtn.style.display = "none";
+    renderResults(searchData);
+}
+
+async function renderResults(items) {
+    const container = document.getElementById("results");
+    container.innerHTML = "";
+
+    if (items.length === 0) {
+        container.innerHTML = "<p>🦆Aucun canard trouvé🦆</p>";
+        return;
+    }
+
+    for (const item of items) {
+        const carte = await creerCarteProduit(item);
+        container.appendChild(carte);
+    }
 }
 
 // À la fin de main.js
