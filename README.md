@@ -14,5 +14,3 @@ LSDuck est une application web complète qui permet aux utilisateurs de parcouri
 * **Frontend :** HTML, CSS, JavaScript
 * **Backend :** Fichier JSON
 * **Gestion de version :** Git & GitHub
-# ICT426-2026-froieth_spruchr-lsduck
-Site de vente de canard en plastique 🦆
